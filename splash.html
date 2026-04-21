@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Willkommen | Dr. DirKInstitute</title>
+  <meta name="description" content="Willkommen bei Dr. DirKInstitute - Interims-IT, Sicherheit und KI-Governance.">
+  <link rel="icon" type="image/png" href="assets/logos/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="splash-body">
+  <main class="splash-main">
+    <div class="splash-logos" aria-label="Marken">
+      <img class="splash-logo-left" src="assets/logos/kn_logo.png" alt="K&N EDV Konzepte GmbH">
+      <img class="splash-logo-right" src="assets/logos/Dr.DirKInstitute_LOGO.png" alt="Dr. DirKInstitute">
+    </div>
+
+    <section class="splash-card">
+      <div class="splash-copy">
+        <p class="kicker">Dr. DirKInstitute | Teil der K&amp;N EDV Konzepte GmbH</p>
+        <h1>Interims-IT, Sicherheit<br>und KI-Governance<br>mit klarem Kurs.</h1>
+        <p>Strategische Klarheit, operative Stabilitaet und belastbare Entscheidungsfaehigkeit fuer den Mittelstand.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="index.html">Zur Hauptseite</a>
+        </div>
+        <p class="splash-hint">Automatischer Wechsel in <span id="splashCount">4</span> Sekunden...</p>
+      </div>
+
+      <figure class="splash-photo">
+        <img src="assets/portrait/Dirk_20251209.jpg" alt="Dr. Dirk Koetting">
+      </figure>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var seconds = 4;
+      var countNode = document.getElementById("splashCount");
+      var timer = window.setInterval(function () {
+        seconds -= 1;
+        if (countNode) {
+          countNode.textContent = String(Math.max(seconds, 0));
+        }
+        if (seconds <= 0) {
+          window.clearInterval(timer);
+          try {
+            sessionStorage.setItem("edv_splash_seen", "1");
+          } catch (e) {}
+          window.location.href = "index.html";
+        }
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>
+
+
