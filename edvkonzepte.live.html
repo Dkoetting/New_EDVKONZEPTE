@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -9,6 +9,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var cameFromSplash = params.get("from_splash") === "1";
+      var splashSeen = false;
+
+      try {
+        splashSeen = sessionStorage.getItem("edv_splash_seen") === "1";
+      } catch (e) {
+        splashSeen = false;
+      }
+
+      if (!splashSeen && !cameFromSplash) {
+        window.location.replace("splash.html");
+        return;
+      }
+
+      if (cameFromSplash) {
+        try {
+          sessionStorage.setItem("edv_splash_seen", "1");
+        } catch (e) {}
+        params.delete("from_splash");
+        var cleanQuery = params.toString();
+        var cleanUrl = window.location.pathname + (cleanQuery ? "?" + cleanQuery : "") + window.location.hash;
+        window.history.replaceState({}, "", cleanUrl);
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="home">
@@ -24,15 +52,19 @@
         <a data-link="vorgehen" href="vorgehen.html">Vorgehen</a>
         <a data-link="profil" href="profil-referenzen.html">Profil &amp; Referenzen</a>
         <a data-link="kontakt" href="kontakt.html">Kontakt</a>
-        <a class="hide-desktop" href="https://termin.dr-dirkinstitute.org/" target="_blank" rel="noreferrer">30-Minuten-Scoping buchen</a>
+        <a class="hide-desktop" href="https://termin.dr-dirkinstitute.org/" target="_blank" rel="noreferrer">Erstgespräch buchen</a>
       </nav>
 
             <div class="header-actions">
+        <div class="lang-toggle" aria-label="Language switch">
+          <button class="lang-btn is-active" type="button" data-lang="de">DE</button>
+          <button class="lang-btn" type="button" data-lang="en">EN</button>
+        </div>
         <a class="brand-right brand-right-full" href="profil-referenzen.html" aria-label="Dr. DirKInstitute">
           <img src="assets/logos/Dr.DirKInstitute_LOGO.png" alt="Dr. DirKInstitute">
           <span>Part of K&amp;N EDV Konzepte GmbH</span>
         </a>
-        <a class="btn btn-primary" href="https://termin.dr-dirkinstitute.org/" target="_blank" rel="noreferrer">30-Minuten-Scoping buchen</a>
+        <a class="btn btn-primary" href="https://termin.dr-dirkinstitute.org/" target="_blank" rel="noreferrer">Erstgespr&auml;ch buchen</a>
         <button class="mobile-menu-btn hide-desktop" type="button" data-menu-btn>Men&uuml;</button>
       </div>
     </div>
@@ -46,7 +78,7 @@
         <p class="subline">Für Geschäftsführung, CIO und CISO, wenn IT, Informationssicherheit und KI nicht nur funktionieren, sondern Kosten-, Risiko- und Auditwirkung nachvollziehbar steuerbar werden müssen.</p>
 
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://termin.dr-dirkinstitute.org/" target="_blank" rel="noreferrer">30-Minuten-Scoping buchen</a>
+          <a class="btn btn-primary" href="https://termin.dr-dirkinstitute.org/" target="_blank" rel="noreferrer">Erstgespräch buchen</a>
           <a class="btn btn-secondary" href="#governance-modelle">Modelle ansehen</a>
         </div>
 
@@ -78,10 +110,6 @@
           <p>Kommunikationsarchitektur für Entscheider: Deutungshoheit, Begriffshoheit, Haftungsbezug und Architektenrolle statt reiner Aufmerksamkeit.</p>
         </article>
         <article class="proof-card">
-          <h3>DOSE-Prinzip</h3>
-          <p>Wirkmodell für organisatorische Leistungsfähigkeit: Fokus in der Umsetzung, Vertrauen zwischen Bereichen, Souveränität in Entscheidungen und Resilienz im Betrieb.</p>
-        </article>
-        <article class="proof-card">
           <h3>KIeR-System</h3>
           <p>Roadmap für KI-Governance: Rollen, Risiken, Maßnahmen, Nachweise und Umsetzung werden strukturiert operationalisiert.</p>
         </article>
@@ -91,6 +119,8 @@
         </article>
       </div>
     </section>
+
+
 
     <section class="section" id="wirtschaftlicher-rueckenschutz">
       <h2 class="section-title">Wirtschaftlicher Rückenschutz für Entscheider</h2>
@@ -142,37 +172,9 @@
       </div>
     </section>
 
-    <section class="section" id="30-tage-ergebnis">
-      <h2 class="section-title">Was nach 30 Tagen entscheidungsreif vorliegt</h2>
-      <p class="section-intro">Ziel ist keine weitere Foliensammlung, sondern eine belastbare Entscheidungsgrundlage für Geschäftsführung, CIO und CISO.</p>
-      <div class="proof-grid">
-        <article class="proof-card">
-          <h3>Priorisierte Risikolandkarte</h3>
-          <p>Welche IT-, Sicherheits- und KI-Risiken zuerst Kosten verursachen, Auditfähigkeit gefährden oder Führungszeit binden.</p>
-        </article>
-        <article class="proof-card">
-          <h3>Verantwortungsmatrix</h3>
-          <p>Wer entscheidet, wer umsetzt, wer nachweist und welche Eskalationswege gelten.</p>
-        </article>
-        <article class="proof-card">
-          <h3>Maßnahmen- und Nachweisplan</h3>
-          <p>Welche Schritte kurzfristig Wirkung erzeugen und welche Nachweise für Audit, Regulierung und Governance benötigt werden.</p>
-        </article>
-        <article class="proof-card">
-          <h3>Management-Entscheidungsvorlage</h3>
-          <p>Eine klare Grundlage, um Investitionen, Risiken und nächste Schritte auf Führungsebene zu entscheiden.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="vertrauensbasis">
-      <h2 class="section-title">Vertrauensbasis</h2>
-      <p class="section-intro">Über 25 Jahre operative IT- und Transformationspraxis, Erfahrung in regulierten Umfeldern und die Verbindung aus Wissenschaft, Praxis und Lehre. Der Fokus liegt auf IT-Governance, Informationssicherheit, NIS-2, ISMS und KI-Governance.</p>
-    </section>
-
     <section class="section">
-      <h2 class="section-title">Der 30-Tage-Governance-Defizit-Check</h2>
-      <p class="section-intro">Sie müssen nicht mit einem Großmandat starten. Der 30-Tage-Governance-Defizit-Check liefert eine klare Risikolandkarte, Verantwortungsmatrix, Maßnahmen- und Nachweisplan sowie eine Management-Entscheidungsvorlage für die nächsten Schritte.</p>
+      <h2 class="section-title">Der erste Schritt zur belastbaren Entscheidung</h2>
+      <p class="section-intro">Sie müssen nicht vorab wissen, ob das Problem in IT, Informationssicherheit, KI-Governance oder Führung liegt. Im Erstgespräch klären wir, welcher Hebel zuerst Kosten, Risiken und Umsetzungsstau reduziert.</p>
 
       <div class="card-grid">
         <article class="card">
@@ -204,9 +206,9 @@
 
     <section class="cta-panel">
       <h2>Wenn IT, Informationssicherheit oder KI-Governance zur Führungsbelastung wird, braucht es Klarheit.</h2>
-      <p>Im 30-Minuten-Scoping klären wir, ob ein 30-Tage-Governance-Defizit-Check für Ihre Organisation der richtige Einstieg ist.</p>
+      <p>Im 30-Minuten-Scoping klären wir, welches Governance-Defizit aktuell am meisten Zeit, Budget und Führungsenergie bindet.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://termin.dr-dirkinstitute.org/" target="_blank" rel="noreferrer">30-Minuten-Scoping buchen</a>
+        <a class="btn btn-primary" href="https://termin.dr-dirkinstitute.org/" target="_blank" rel="noreferrer">Erstgespräch buchen</a>
         <a class="btn btn-secondary" href="kontakt.html">Kontaktoptionen</a>
       </div>
     </section>
@@ -234,11 +236,6 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
 
 
 

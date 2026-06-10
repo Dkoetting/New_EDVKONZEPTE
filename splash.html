@@ -24,7 +24,7 @@
         <h1>Interims-IT, Sicherheit<br>und KI-Governance<br>mit klarem Kurs.</h1>
         <p>Strategische Klarheit, operative Stabilitaet und belastbare Entscheidungsfaehigkeit fuer den Mittelstand.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="index.html">Zur Hauptseite</a>
+          <a class="btn btn-primary" href="index.html?from_splash=1">Zur Hauptseite</a>
         </div>
         <p class="splash-hint">Automatischer Wechsel in <span id="splashCount">4</span> Sekunden...</p>
       </div>
@@ -49,12 +49,13 @@
           try {
             sessionStorage.setItem("edv_splash_seen", "1");
           } catch (e) {}
-          window.location.href = "index.html";
+          window.location.href = "index.html?from_splash=1";
         }
       }, 1000);
     })();
   </script>
 </body>
 </html>
+
 
 
