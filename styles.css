@@ -42,7 +42,7 @@ body::before {
   transform: translate(-50%, -50%);
   width: clamp(380px, 42vw, 560px);
   height: clamp(380px, 42vw, 560px);
-  background: url("assets/logos/Logo_Dr.DirKinstitue.png") center/contain no-repeat;
+  background: url("assets/logos/kn_logo.png") center/contain no-repeat;
   opacity: 0.055;
   filter: grayscale(100%);
   mix-blend-mode: multiply;
@@ -687,7 +687,7 @@ img {
   }
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1380px) {
   .header-inner {
     grid-template-columns: minmax(200px, 280px) 1fr auto;
   }
